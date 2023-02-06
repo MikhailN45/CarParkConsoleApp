@@ -28,3 +28,11 @@ fun main() {
         }
     }
 }
+
+
+
+fun ParkingMaganer() {
+    //Parking income cars
+    //Return cars only to they owners
+    //Provides actual and past statistics about parking slots load.
+}
