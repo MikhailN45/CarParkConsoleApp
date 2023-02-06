@@ -1,3 +1,3 @@
 class Parking {
-    val parking = mutableMapOf<String, String>()
+    var parking = mutableMapOf<String, String>()
 }
