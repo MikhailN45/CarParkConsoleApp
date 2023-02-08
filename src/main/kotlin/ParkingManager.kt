@@ -68,7 +68,7 @@ object ParkingManager {
             if (v != null) {
                 println("P$k - ${v.brand} ${v.color} ${v.id} ${v.owner.ownerName} ${v.owner.ownerSurname}")
             } else {
-                println(k + Messages.slotStatsIsEmpty)
+                println("P$k "+" ${Messages.slotStatsIsEmpty}")
             }
         }
 
