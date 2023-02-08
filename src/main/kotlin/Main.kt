@@ -1,30 +1,60 @@
+import ParkingManager.carInfo
+import ParkingManager.parkCar
+import ParkingManager.returnCar
+import ParkingManager.slotInfo
+
 fun main() {
-    print("Type /start")
+
+    print(Messages.welcomeMessage)
 
     var inputText = readLine()
-
     while (true) {
         when (inputText) {
 
-            "/start" -> {
-                println("App started, hello!")
+            Command.startCommand -> {
+                println(Messages.startMessage)
                 inputText = readLine()
             }
 
-            "/help" -> {
-                println("Available commands: /start for begin work, /help for info, /end for close app")
+            Command.parkCommand -> {
+                println(Messages.parkRequestInfoMessage)
+                parkCar()
                 inputText = readLine()
             }
 
-            "/end" -> {
-                println("App closed, good bye!")
+            Command.returnCommand -> {
+                println(Messages.returnMessage)
+                returnCar()
+                inputText = readLine()
+            }
+
+            Command.parkInfoByCarCommand -> {
+                println(Messages.parkInfoByCarMessage)
+                carInfo()
+                inputText = readLine()
+            }
+
+            Command.parkInfoByPlaceCommand -> {
+                println(Messages.parkInfoByPlaceMessage)
+                slotInfo()
+                inputText = readLine()
+            }
+
+            Command.helpCommand -> {
+                println(Messages.helpMessage)
+                inputText = readLine()
+            }
+
+            Command.endCommand -> {
+                println(Messages.endMessage)
                 break
             }
 
             else -> {
-                println("Invalid input! Type /help for info")
+                println(Messages.invalidCommandMessage)
                 inputText = readLine()
             }
         }
     }
 }
+

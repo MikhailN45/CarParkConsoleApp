@@ -1,3 +1,4 @@
 data class Owner(
-    val ownerId: String = ""
+    val ownerName: String = "",
+    val ownerSurname: String = ""
 )
