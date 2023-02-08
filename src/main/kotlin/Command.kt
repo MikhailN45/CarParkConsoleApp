@@ -1,11 +1,13 @@
 class Command {
     companion object {
-        val startCommand = "/start" //start the program
-        val helpCommand = "/help" //provides command list
-        val endCommand = "/end" //stop the program
-        val parkCommand = "/park" //park a car to free slot
-        val returnCommand = "/return" //return a car to their owner
-        val parkInfoByCarCommand = "/park_info_by_car" //return car slot by car number
-        val parkInfoByPlaceCommand = "/park_info_by_place" //return car info by slot
+        const val startCommand = "/start" //start the program
+        const val helpCommand = "/help" //provides command list
+        const val endCommand = "/end" //stop the program
+        const val parkCommand = "/park" //park a car to free slot
+        const val returnCommand = "/return" //return a car to their owner
+        const val parkInfoByCarCommand = "/park_info_by_car" //return car slot by car number
+        const val parkInfoByPlaceCommand = "/park_info_by_place" //return car info by slot
+        const val parkStatsCommand = "/park_stats" //check all slot status
+        const val parkAllStatsCommand = "/park_all_stats" //check parking logs
     }
 }

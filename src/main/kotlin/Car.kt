@@ -1,6 +1,6 @@
 data class Car(
     var id: String = "",
-    var model: String = "",
+    var brand: String = "",
     var color: String = "",
-    var owner: String = ""
+    var owner: Owner
 )
