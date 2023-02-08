@@ -1,35 +1,42 @@
 object ParkingManager {
 
     private val parking = Parking.createParking()
-    fun readParkData(): Car {
+    private fun readParkData(): Car {
         val userData = readLine()
-        val arr = userData?.split(" ")?.toTypedArray() ?: throw Exception(Messages.emptyMessage)
-        if (arr.size != 5) println(Messages.invalidFormat)
+        val arr = userData?.split(" ")?.toTypedArray()!!
         val owner = Owner(ownerName = arr[3], ownerSurname = arr[4])
         return Car(brand = arr[0], color = arr[1], id = arr[2], owner = owner)
     }
 
-    fun readOwnerData(): Owner {
+    private fun readOwnerData(): Owner {
         val ownerData = readLine()
-        val arr: List<String> = ownerData?.split(" ") ?: throw Exception(Messages.emptyMessage)
+        val arr: List<String> = ownerData?.split(" ")!!
         return Owner(ownerName = arr[0], ownerSurname = arr[1])
     }
 
     fun parkCar() {
-        val freeSlot = parking.filterValues { it == null }.keys.firstOrNull() ?: throw Exception(Messages.fullMessage)
+        val freeSlot = parking.filterValues { it == null }.keys.firstOrNull()
         val car = readParkData()
-        parking[freeSlot] = car
-        println(Messages.successPark)
+        if (freeSlot != null) {
+            parking[freeSlot] = car
+            println(Messages.successPark)
+        } else {
+            println(Messages.fullMessage)
+        }
+
     }
 
     fun returnCar() {
         val owner = readOwnerData()
         val checkOwner =
             parking.any { it.value?.owner?.ownerName == owner.ownerName || it.value?.owner?.ownerSurname == owner.ownerSurname }
-        if (!checkOwner) println(Messages.invalidOwner)
-        val car = parking.filterValues { it?.owner == owner }.keys.first()
-        println(Messages.successReturn + car)
-        parking[car] = null
+        if (!checkOwner) {
+            println(Messages.invalidOwner)
+        } else {
+            val car = parking.filterValues { it?.owner == owner }.keys.first()
+            println(Messages.successReturn + car)
+            parking[car] = null
+        }
     }
 
     fun carInfo() {
