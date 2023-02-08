@@ -1,5 +1,7 @@
+import ParkingManager.allSlotStats
 import ParkingManager.carInfo
 import ParkingManager.parkCar
+import ParkingManager.parkLogs
 import ParkingManager.returnCar
 import ParkingManager.slotInfo
 
@@ -37,6 +39,16 @@ fun main() {
             Command.parkInfoByPlaceCommand -> {
                 println(Messages.parkInfoByPlaceMessage)
                 slotInfo()
+                inputText = readLine()
+            }
+
+            Command.parkStatsCommand -> {
+                allSlotStats()
+                inputText = readLine()
+            }
+
+            Command.parkAllStatsCommand -> {
+                parkLogs()
                 inputText = readLine()
             }
 

@@ -7,5 +7,7 @@ class Command {
         const val returnCommand = "/return" //return a car to their owner
         const val parkInfoByCarCommand = "/park_info_by_car" //return car slot by car number
         const val parkInfoByPlaceCommand = "/park_info_by_place" //return car info by slot
+        const val parkStatsCommand = "/park_stats" //check all slot status
+        const val parkAllStatsCommand = "/park_all_stats" //check parking logs
     }
 }

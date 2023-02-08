@@ -1,6 +1,7 @@
 object ParkingManager {
 
     private val parking = Parking.createParking()
+    private var counter = 0
     private fun readParkData(): Car {
         val userData = readLine()
         val arr = userData?.split(" ")?.toTypedArray()!!
@@ -20,6 +21,7 @@ object ParkingManager {
         if (freeSlot != null) {
             parking[freeSlot] = car
             println(Messages.successPark)
+            counter++
         } else {
             println(Messages.fullMessage)
         }
@@ -36,6 +38,7 @@ object ParkingManager {
             val car = parking.filterValues { it?.owner == owner }.keys.first()
             println(Messages.successReturn + car)
             parking[car] = null
+            counter++
         }
     }
 
@@ -43,7 +46,7 @@ object ParkingManager {
         val carId = readLine()
         val checkCar = parking.any { it.value?.id == carId }
         val slot = parking.filterValues { it?.id == carId }.keys
-        if (!checkCar) println(Messages.invalidId) else println(Messages.slotMessage + slot)
+        if (!checkCar) println(Messages.invalidId) else println(Messages.slotMessageParked + slot)
     }
 
     fun slotInfo() {
@@ -59,4 +62,20 @@ object ParkingManager {
             Messages.emptySlot
         )
     }
+
+    fun allSlotStats() {
+        parking.forEach { (k, v) ->
+            if (v != null) {
+                println("P$k - ${v.brand} ${v.color} ${v.id} ${v.owner.ownerName} ${v.owner.ownerSurname}")
+            } else {
+                println(k + Messages.slotStatsIsEmpty)
+            }
+        }
+
+    }
+
+    fun parkLogs() {
+        println(Messages.parkLogs + counter)
+    }
+
 }
